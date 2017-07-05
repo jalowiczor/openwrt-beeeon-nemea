@@ -1,0 +1,90 @@
+From b2f1b347318bf188367bedb67ee8c72ab21d43a1 Mon Sep 17 00:00:00 2001
+From: Tomas Novotny <tomas@novotny.cz>
+Date: Thu, 8 Dec 2016 21:56:57 +0100
+Subject: [PATCH] platform/unix/*.h: fix include paths
+
+Signed-off-by: Tomas Novotny <tomas@novotny.cz>
+---
+ cpp/src/platform/unix/FileOpsImpl.h          | 4 ++--
+ cpp/src/platform/unix/LogImpl.h              | 2 +-
+ cpp/src/platform/unix/SerialControllerImpl.h | 4 ++--
+ cpp/src/platform/unix/TimeStampImpl.h        | 2 +-
+ cpp/src/platform/unix/WaitImpl.h             | 6 +++---
+ 5 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/cpp/src/platform/unix/FileOpsImpl.h b/cpp/src/platform/unix/FileOpsImpl.h
+index 4a9fb7c..75c56c3 100644
+--- a/cpp/src/platform/unix/FileOpsImpl.h
++++ b/cpp/src/platform/unix/FileOpsImpl.h
+@@ -30,8 +30,8 @@
+ 
+ #include <stdarg.h>
+ #include <string>
+-#include "Defs.h"
+-#include "platform/FileOps.h"
++#include "../../Defs.h"
++#include "../../platform/FileOps.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/unix/LogImpl.h b/cpp/src/platform/unix/LogImpl.h
+index 1497072..3f5c8ac 100644
+--- a/cpp/src/platform/unix/LogImpl.h
++++ b/cpp/src/platform/unix/LogImpl.h
+@@ -33,7 +33,7 @@
+ #include <time.h>
+ #include <sys/time.h>
+ #include <list>
+-#include "platform/Log.h"
++#include "../../platform/Log.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/unix/SerialControllerImpl.h b/cpp/src/platform/unix/SerialControllerImpl.h
+index 6043403..5ea436d 100644
+--- a/cpp/src/platform/unix/SerialControllerImpl.h
++++ b/cpp/src/platform/unix/SerialControllerImpl.h
+@@ -37,8 +37,8 @@
+ #include <sys/ioctl.h>
+ #include <arpa/inet.h>
+ 
+-#include "Defs.h"
+-#include "platform/SerialController.h"
++#include "../../Defs.h"
++#include "../../platform/SerialController.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/unix/TimeStampImpl.h b/cpp/src/platform/unix/TimeStampImpl.h
+index f7a8fec..a9487ec 100644
+--- a/cpp/src/platform/unix/TimeStampImpl.h
++++ b/cpp/src/platform/unix/TimeStampImpl.h
+@@ -31,7 +31,7 @@
+ #include <stdio.h>
+ #include <time.h>
+ #include <sys/time.h>
+-#include "Defs.h"
++#include "../../Defs.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/unix/WaitImpl.h b/cpp/src/platform/unix/WaitImpl.h
+index 58c4e02..4ea665a 100644
+--- a/cpp/src/platform/unix/WaitImpl.h
++++ b/cpp/src/platform/unix/WaitImpl.h
+@@ -32,9 +32,9 @@
+ #include <stdio.h>
+ #include <pthread.h>
+ #include <list>
+-#include "Defs.h"
+-#include "platform/Ref.h"
+-#include "platform/Wait.h"
++#include "../../Defs.h"
++#include "../../platform/Ref.h"
++#include "../../platform/Wait.h"
+ 
+ namespace OpenZWave
+ {
+-- 
+1.8.3.1
+

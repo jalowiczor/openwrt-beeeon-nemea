@@ -1,0 +1,25 @@
+From a1d4e933f90e563b8f466cb7d80b337d231fcec9 Mon Sep 17 00:00:00 2001
+From: Tomas Novotny <inovottom@fit.vutbr.cz>
+Date: Wed, 5 Jul 2017 15:23:46 +0200
+Subject: [PATCH] build: remove systemd file
+
+The service isn't useful on LEDE.
+
+Signed-off-by: Tomas Novotny <inovottom@fit.vutbr.cz>
+---
+ CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f144aaa..219b8a1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,5 +27,3 @@ install(FILES conf/gateway-startup.ini
+ 	DESTINATION etc/beeeon/gateway)
+ install(DIRECTORY conf/config.d
+ 	DESTINATION etc/beeeon/gateway)
+-install(FILES systemd/beeeon-gateway.service
+-	DESTINATION lib/systemd/system)
+-- 
+1.8.3.1
+

@@ -1,0 +1,192 @@
+From 3987abfed9fd4b7308259aadf0fcd3f2811cce88 Mon Sep 17 00:00:00 2001
+From: Tomas Novotny <tomas@novotny.cz>
+Date: Thu, 8 Dec 2016 21:30:55 +0100
+Subject: [PATCH 2/2] platform/*.h: fix include paths
+
+Signed-off-by: Tomas Novotny <tomas@novotny.cz>
+---
+ cpp/src/platform/Controller.h       | 6 +++---
+ cpp/src/platform/Event.h            | 2 +-
+ cpp/src/platform/FileOps.h          | 2 +-
+ cpp/src/platform/HidController.h    | 4 ++--
+ cpp/src/platform/Log.h              | 2 +-
+ cpp/src/platform/Mutex.h            | 2 +-
+ cpp/src/platform/Ref.h              | 2 +-
+ cpp/src/platform/SerialController.h | 4 ++--
+ cpp/src/platform/Stream.h           | 4 ++--
+ cpp/src/platform/Thread.h           | 4 ++--
+ cpp/src/platform/TimeStamp.h        | 2 +-
+ cpp/src/platform/Wait.h             | 2 +-
+ 12 files changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/cpp/src/platform/Controller.h b/cpp/src/platform/Controller.h
+index ee80880..c2dbd6c 100644
+--- a/cpp/src/platform/Controller.h
++++ b/cpp/src/platform/Controller.h
+@@ -30,9 +30,9 @@
+ 
+ #include <string>
+ #include <list>
+-#include "Defs.h"
+-#include "Driver.h"
+-#include "platform/Stream.h"
++#include "../Defs.h"
++#include "../Driver.h"
++#include "../platform/Stream.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/Event.h b/cpp/src/platform/Event.h
+index 534d396..9500b60 100644
+--- a/cpp/src/platform/Event.h
++++ b/cpp/src/platform/Event.h
+@@ -28,7 +28,7 @@
+ #ifndef _Event_H
+ #define _Event_H
+ 
+-#include "platform/Wait.h"
++#include "../platform/Wait.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/FileOps.h b/cpp/src/platform/FileOps.h
+index 79bf06d..548f8f6 100644
+--- a/cpp/src/platform/FileOps.h
++++ b/cpp/src/platform/FileOps.h
+@@ -30,7 +30,7 @@
+ 
+ #include <stdarg.h>
+ #include <string>
+-#include "Defs.h"
++#include "../Defs.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/HidController.h b/cpp/src/platform/HidController.h
+index 427682a..2f21dc6 100644
+--- a/cpp/src/platform/HidController.h
++++ b/cpp/src/platform/HidController.h
+@@ -29,8 +29,8 @@
+ #define _HidController_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "platform/Controller.h"
++#include "../Defs.h"
++#include "../platform/Controller.h"
+ 
+ 
+ struct hid_device_;
+diff --git a/cpp/src/platform/Log.h b/cpp/src/platform/Log.h
+index ffe4da4..42bfde2 100644
+--- a/cpp/src/platform/Log.h
++++ b/cpp/src/platform/Log.h
+@@ -30,7 +30,7 @@
+ 
+ #include <stdarg.h>
+ #include <string>
+-#include "Defs.h"
++#include "../Defs.h"
+ 
+ 
+ 
+diff --git a/cpp/src/platform/Mutex.h b/cpp/src/platform/Mutex.h
+index 43d50a7..a2c754d 100644
+--- a/cpp/src/platform/Mutex.h
++++ b/cpp/src/platform/Mutex.h
+@@ -28,7 +28,7 @@
+ #ifndef _Mutex_H
+ #define _Mutex_H
+ 
+-#include "platform/Wait.h"
++#include "../platform/Wait.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/Ref.h b/cpp/src/platform/Ref.h
+index 57c3274..cab6e11 100644
+--- a/cpp/src/platform/Ref.h
++++ b/cpp/src/platform/Ref.h
+@@ -30,7 +30,7 @@
+ 
+ #pragma once
+ 
+-#include "Defs.h"
++#include "../Defs.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/SerialController.h b/cpp/src/platform/SerialController.h
+index 5d161f9..3c87c22 100644
+--- a/cpp/src/platform/SerialController.h
++++ b/cpp/src/platform/SerialController.h
+@@ -29,8 +29,8 @@
+ #define _SerialController_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "platform/Controller.h"
++#include "../Defs.h"
++#include "../platform/Controller.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/Stream.h b/cpp/src/platform/Stream.h
+index f810fa9..774d3be 100644
+--- a/cpp/src/platform/Stream.h
++++ b/cpp/src/platform/Stream.h
+@@ -28,8 +28,8 @@
+ #ifndef _Stream_H
+ #define _Stream_H
+ 
+-#include "Defs.h"
+-#include "platform/Wait.h"
++#include "../Defs.h"
++#include "../platform/Wait.h"
+ 
+ #include <string>
+ 
+diff --git a/cpp/src/platform/Thread.h b/cpp/src/platform/Thread.h
+index 936bd18..4bbbf0d 100644
+--- a/cpp/src/platform/Thread.h
++++ b/cpp/src/platform/Thread.h
+@@ -29,8 +29,8 @@
+ #define _Thread_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "platform/Wait.h"
++#include "../Defs.h"
++#include "../platform/Wait.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/TimeStamp.h b/cpp/src/platform/TimeStamp.h
+index b3c6f9e..4a574e7 100644
+--- a/cpp/src/platform/TimeStamp.h
++++ b/cpp/src/platform/TimeStamp.h
+@@ -28,7 +28,7 @@
+ #ifndef _TimeStamp_H
+ #define _TimeStamp_H
+ 
+-#include "Defs.h"
++#include "../Defs.h"
+ 
+ namespace OpenZWave
+ {
+diff --git a/cpp/src/platform/Wait.h b/cpp/src/platform/Wait.h
+index 2aff6bb..b0cce23 100644
+--- a/cpp/src/platform/Wait.h
++++ b/cpp/src/platform/Wait.h
+@@ -30,7 +30,7 @@
+ #define _Wait_H
+ 
+ #include <list>
+-#include "platform/Ref.h"
++#include "../platform/Ref.h"
+ 
+ namespace OpenZWave
+ {
+-- 
+1.8.3.1
+

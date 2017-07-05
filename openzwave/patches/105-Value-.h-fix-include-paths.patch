@@ -1,0 +1,220 @@
+From e96a842e3dd7dc0e29f16c37fac5170c03f5fa7c Mon Sep 17 00:00:00 2001
+From: Tomas Novotny <tomas@novotny.cz>
+Date: Thu, 8 Dec 2016 21:19:56 +0100
+Subject: [PATCH 1/2] Value*.h: fix include paths
+
+Signed-off-by: Tomas Novotny <tomas@novotny.cz>
+---
+ cpp/src/value_classes/Value.h         | 6 +++---
+ cpp/src/value_classes/ValueBool.h     | 4 ++--
+ cpp/src/value_classes/ValueButton.h   | 4 ++--
+ cpp/src/value_classes/ValueByte.h     | 4 ++--
+ cpp/src/value_classes/ValueDecimal.h  | 4 ++--
+ cpp/src/value_classes/ValueID.h       | 2 +-
+ cpp/src/value_classes/ValueInt.h      | 4 ++--
+ cpp/src/value_classes/ValueList.h     | 4 ++--
+ cpp/src/value_classes/ValueRaw.h      | 4 ++--
+ cpp/src/value_classes/ValueSchedule.h | 4 ++--
+ cpp/src/value_classes/ValueShort.h    | 4 ++--
+ cpp/src/value_classes/ValueStore.h    | 4 ++--
+ cpp/src/value_classes/ValueString.h   | 4 ++--
+ 13 files changed, 26 insertions(+), 26 deletions(-)
+
+diff --git a/cpp/src/value_classes/Value.h b/cpp/src/value_classes/Value.h
+index c8748d8..bdff888 100644
+--- a/cpp/src/value_classes/Value.h
++++ b/cpp/src/value_classes/Value.h
+@@ -32,9 +32,9 @@
+ #ifdef __FreeBSD__
+ #include <time.h>
+ #endif
+-#include "Defs.h"
+-#include "platform/Ref.h"
+-#include "value_classes/ValueID.h"
++#include "../Defs.h"
++#include "../platform/Ref.h"
++#include "ValueID.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueBool.h b/cpp/src/value_classes/ValueBool.h
+index c456ef2..676f3ec 100644
+--- a/cpp/src/value_classes/ValueBool.h
++++ b/cpp/src/value_classes/ValueBool.h
+@@ -29,8 +29,8 @@
+ #define _ValueBool_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueButton.h b/cpp/src/value_classes/ValueButton.h
+index d2231e4..864ec44 100644
+--- a/cpp/src/value_classes/ValueButton.h
++++ b/cpp/src/value_classes/ValueButton.h
+@@ -29,8 +29,8 @@
+ #define _ValueButton_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueByte.h b/cpp/src/value_classes/ValueByte.h
+index b843191..f2e1dc8 100644
+--- a/cpp/src/value_classes/ValueByte.h
++++ b/cpp/src/value_classes/ValueByte.h
+@@ -29,8 +29,8 @@
+ #define _ValueByte_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueDecimal.h b/cpp/src/value_classes/ValueDecimal.h
+index fec4a20..f3e39f5 100644
+--- a/cpp/src/value_classes/ValueDecimal.h
++++ b/cpp/src/value_classes/ValueDecimal.h
+@@ -29,8 +29,8 @@
+ #define _ValueDecimal_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueID.h b/cpp/src/value_classes/ValueID.h
+index ea183bf..38b8639 100644
+--- a/cpp/src/value_classes/ValueID.h
++++ b/cpp/src/value_classes/ValueID.h
+@@ -30,7 +30,7 @@
+ 
+ #include <string>
+ #include <assert.h>
+-#include "Defs.h"
++#include "../Defs.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueInt.h b/cpp/src/value_classes/ValueInt.h
+index 48b1a95..8090be7 100644
+--- a/cpp/src/value_classes/ValueInt.h
++++ b/cpp/src/value_classes/ValueInt.h
+@@ -29,8 +29,8 @@
+ #define _ValueInt_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueList.h b/cpp/src/value_classes/ValueList.h
+index af9a456..4295738 100644
+--- a/cpp/src/value_classes/ValueList.h
++++ b/cpp/src/value_classes/ValueList.h
+@@ -30,8 +30,8 @@
+ 
+ #include <string>
+ #include <vector>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueRaw.h b/cpp/src/value_classes/ValueRaw.h
+index a7c6111..f392625 100644
+--- a/cpp/src/value_classes/ValueRaw.h
++++ b/cpp/src/value_classes/ValueRaw.h
+@@ -29,8 +29,8 @@
+ #define _ValueRaw_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueSchedule.h b/cpp/src/value_classes/ValueSchedule.h
+index 9a319b5..a2bb7d1 100644
+--- a/cpp/src/value_classes/ValueSchedule.h
++++ b/cpp/src/value_classes/ValueSchedule.h
+@@ -29,8 +29,8 @@
+ #define _ValueSchedule_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueShort.h b/cpp/src/value_classes/ValueShort.h
+index dd96fc7..17a246d 100644
+--- a/cpp/src/value_classes/ValueShort.h
++++ b/cpp/src/value_classes/ValueShort.h
+@@ -29,8 +29,8 @@
+ #define _ValueShort_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueStore.h b/cpp/src/value_classes/ValueStore.h
+index 7cf2a29..5550a48 100644
+--- a/cpp/src/value_classes/ValueStore.h
++++ b/cpp/src/value_classes/ValueStore.h
+@@ -29,8 +29,8 @@
+ #define _ValueStore_H
+ 
+ #include <map>
+-#include "Defs.h"
+-#include "value_classes/ValueID.h"
++#include "../Defs.h"
++#include "ValueID.h"
+ 
+ class TiXmlElement;
+ 
+diff --git a/cpp/src/value_classes/ValueString.h b/cpp/src/value_classes/ValueString.h
+index 3ace34f..b52c5cf 100644
+--- a/cpp/src/value_classes/ValueString.h
++++ b/cpp/src/value_classes/ValueString.h
+@@ -29,8 +29,8 @@
+ #define _ValueString_H
+ 
+ #include <string>
+-#include "Defs.h"
+-#include "value_classes/Value.h"
++#include "../Defs.h"
++#include "Value.h"
+ 
+ class TiXmlElement;
+ 
+-- 
+1.8.3.1
+
