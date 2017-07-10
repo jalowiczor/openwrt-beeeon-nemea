@@ -15,7 +15,7 @@ PKG_VERSION:=1.7.7-all
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
-PKG_SOURCE_URL:=http://pocoproject.org/releases/$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_URL:=http://pocoproject.org/releases/$(PKG_NAME)-1.7.7
 PKG_MD5SUM:=cb3b2915791f5378aac72e4c3fdf83b2
 
 PKG_LICENSE:=BSL-1.0
