@@ -7,19 +7,19 @@
 
 USE_PROCD=1
 START=80
-APP=adaapp
+APP=beeeon-gateway
 BINARY_PATH=/usr/bin
-CONFIG_PATH=/etc/beeeon
+CONFIG_PATH=/etc/beeeon/gateway
 
 registerIniFiles() {
-	for f in $(ls $CONFIG_PATH/*.ini); do
+	for f in $(ls $CONFIG_PATH/*.ini $CONFIG_PATH/config.d/*.ini $CONFIG_PATH/config.d/*.xml); do
 		procd_set_param file "$f"
 	done
 }
 
 start_service() {
 	procd_open_instance
-	procd_set_param command ${BINARY_PATH}/${APP}
+	procd_set_param command ${BINARY_PATH}/${APP} --config=${CONFIG_PATH}/gateway-startup.ini
 	registerIniFiles()
 	procd_set_param stdout 1
 	procd_set_param stderr 1
