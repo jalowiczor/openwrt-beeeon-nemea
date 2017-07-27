@@ -11,7 +11,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=beeeon-gateway
 PKG_VERSION:=1.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 INIT_SCRIPT_NAME:=$(PKG_NAME)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
@@ -33,7 +33,7 @@ TARGET_CXXFLAGS += -DPOCO_NO_FPENVIRONMENT
 
 define Package/$(PKG_NAME)
 	TITLE:=$(PKG_NAME)
-	DEPENDS:=+poco +libmosquittopp +libzmq-curve +cppunit +openzwave
+	DEPENDS:=+poco +libmosquittopp +libzmq-nc +cppunit +openzwave
 	MAINTAINER:=Tomas Novotny <inovottom@fit.vutbr.cz>
 endef
 
