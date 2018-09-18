@@ -21,3 +21,4 @@ src-git beeeon https://github.com/BeeeOn/lede-packages-frc.git
 # beeeon-gateway package.
 make
 ```
+# openwrt-beeeon-nemea
