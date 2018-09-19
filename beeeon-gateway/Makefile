@@ -9,36 +9,48 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=beeeon-gateway
-PKG_VERSION:=1.0
-PKG_RELEASE:=2
+PKG_NAME:=beeeon-gateway-with-nemea
+PKG_VERSION:=v2018.07.1
+PKG_RELEASE:=rc4
 INIT_SCRIPT_NAME:=$(PKG_NAME)
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_PROTO:=git
-PKG_BUILD_DEPENDS:=+libmosquittopp +poco +zmq +cppzmq +openzwave +cppunit
-PKG_SOURCE_URL:=https://github.com/BeeeOn/gateway-frc.git
-PKG_SOURCE_VERSION:=b5bcebd6dc068394906e35d989ed48dc65e9ebaf
-
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+PKG_BUILD_DEPENDS:=+libmosquittopp +poco +zmq +cppzmq +openzwave +cppunit +bluez-libs +libpcap +nemea-framework
 CMAKE_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/cmake.mk
 
+# Source settings (i.e. where to find the source codes)
+# This is a custom variable, used below
+SOURCE_DIR:=src
+
 CMAKE_OPTIONS += \
 	-DCMAKE_INSTALL_PREFIX=/ \
-	-DCMAKE_BUILD_TYPE:STRING=Release
+	-DCMAKE_BUILD_TYPE:STRING=Release \
+	-DENABLE_UCLIBCXX_FIXES=OFF \
+	-DENABLE_UDEV=OFF \
+	-DENABLE_FITP=OFF \
+	-DENABLE_TESTS=OFF
 
-TARGET_CXXFLAGS += -DPOCO_NO_FPENVIRONMENT
+TARGET_CFLAGS += -DPOCO_NO_FPENVIRONMENT
 
 define Package/$(PKG_NAME)
-	TITLE:=$(PKG_NAME)
-	DEPENDS:=+poco +libmosquittopp +libzmq-nc +cppunit +openzwave
-	MAINTAINER:=Tomas Novotny <inovottom@fit.vutbr.cz>
+	TITLE:=Main application for BeeeOn Gateway
+	DEPENDS:=+poco +libmosquittopp +libzmq-nc +cppunit +openzwave +bluez-libs +libpcap +nemea-framework
+	MAINTAINER:=Jakub Jalowiczor <jakub.jalowiczor@vsb.cz>
 endef
 
 define Package/$(PKG_NAME)/description
  Main application for BeeeOn Gateway.
+endef
+
+# Package preparation instructions; create the build directory and copy the source code.
+# The last command is necessary to ensure our preparation instructions remain compatible with the patching system.
+define Build/Prepare
+	mkdir -p $(PKG_BUILD_DIR)
+	cp -r $(SOURCE_DIR)/* $(PKG_BUILD_DIR)
+	$(Build/Patch)
 endef
 
 define Package/$(PKG_NAME)/install

@@ -1,0 +1,79 @@
+***************************************************************
+*Title: README file for compiling NEMEA-BEEEON event collector*
+*Author: Dominik Soukup <soukudom@fit.cvut.cz>                *
+*Date: 2018                                                   *
+*HOWTO valid version: 2017.11                                 *
+***************************************************************
+
+INSTALLATION STEPS:
+1. Copy all files to the src/core directory
+    cp beeeon-nemea/collector/* <beeeonRootDir>/src/core/
+
+2. Modify CMakeLists.txt
+    cd <beeeonRootDir>/src
+    vim CMakeLists.txt
+        #add the following lines
+            #find library section
+            find_library (LIBTRAP trap)
+            find_library (UNIREC unirec)
+            find_library (PCAP pcap)
+
+            #file(GLOB SOURCES section
+            ${PROJECT_SOURCE_DIR}/core/fields.cpp
+            ${PROJECT_SOURCE_DIR}/core/NemeaCollector.cpp
+
+            #set(LIBS section
+            ${PCAP}
+            ${UNIREC}
+            ${LIBTRAP}
+    
+    cd <beeeonRootDir>/test
+    vim CMakeLists.txt
+        #add the following lines
+            #find library section
+            find_library (LIBTRAP trap)
+            find_library (UNIREC unirec)
+            find_library (PCAP pcap)
+    
+            #set(LIBS section
+            ${PCAP}
+            ${UNIREC}
+            ${LIBTRAP}
+
+3. Modify startup config file
+    cd <beeeonRootDir>/conf/config.d
+    vim factory.xml
+        #add the following lines to the appropriate element body
+            #element instance name="distributor"
+            <add name="listener" ref="collector"/>
+
+            #element instance name="bluetoothAvailability"
+            <add name="listeners" ref="collector"/>
+
+            #element instance name="zwaveDeviceManager"
+            <add name="listeners" ref="collector"/>
+
+            #element instance name="commandDispatcher"
+            <add name="listeners" ref="collector"/>
+
+            #element factory
+            <instance name="collector" class="BeeeOn::NemeaCollector">
+                <set name="onExportInterface" text="u:event-onExport"/>
+                <set name="onHCIStatsInterface" text="u:event-onHCIStats"/>
+                <set name="onNodeStatsInterface" text="u:event-onNodeStats"/>
+                <set name="onDriverStatsInterface" text="u:event-onDriverStats"/>
+            </instance>
+
+4. Compile source codes
+    cd <beeeonRootDir>
+    (cd build && cmake ..)
+    make -C build
+    
+5. Run compiled code
+    build/src/beeeon-gateway -c conf/gateway-testing.ini
+
+MISCELLANEOUS
+ * name of output interface could be change in <beeeonRootDir>/conf/config.d in section #element factory 
+ * interface is initialized in initInterface member function
+ * unique parameters are created/processed in appropriate event setter
+
